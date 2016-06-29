@@ -1,0 +1,30 @@
+
+/* Class = "UIButton"; normalTitle = "takephoto"; ObjectID = "3PX-Gd-5aR"; */
+"3PX-Gd-5aR.normalTitle" = "takephoto";
+
+/* Class = "UIButton"; normalTitle = "AudioQueueStop"; ObjectID = "7SS-cW-8k7"; */
+"7SS-cW-8k7.normalTitle" = "AudioQueueStop";
+
+/* Class = "UIButton"; normalTitle = "AudioUnitStop"; ObjectID = "Dki-cr-0th"; */
+"Dki-cr-0th.normalTitle" = "AudioUnitStop";
+
+/* Class = "UIButton"; normalTitle = "AudioUnitStart"; ObjectID = "TE1-H9-uDD"; */
+"TE1-H9-uDD.normalTitle" = "AudioUnitStart";
+
+/* Class = "UIButton"; normalTitle = "switch"; ObjectID = "YYC-55-ZNd"; */
+"YYC-55-ZNd.normalTitle" = "switch";
+
+/* Class = "UIButton"; normalTitle = "AudioQueueStart"; ObjectID = "cBi-JJ-bzN"; */
+"cBi-JJ-bzN.normalTitle" = "AudioQueueStart";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "kkD-Cm-4N5"; */
+"kkD-Cm-4N5.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "AudioUnit"; ObjectID = "pXi-LT-4ei"; */
+"pXi-LT-4ei.normalTitle" = "AudioUnit";
+
+/* Class = "UIButton"; normalTitle = "Capture"; ObjectID = "qZy-Eu-H26"; */
+"qZy-Eu-H26.normalTitle" = "Capture";
+
+/* Class = "UIButton"; normalTitle = "AudioQueue"; ObjectID = "w4c-nY-Lhs"; */
+"w4c-nY-Lhs.normalTitle" = "AudioQueue";

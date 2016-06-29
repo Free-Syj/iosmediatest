@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jPs-yr-cIo">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="biS-hz-Q6Z">
+            <objects>
+                <navigationController id="jPs-yr-cIo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i95-Vx-meF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="UdG-WN-FNQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BhT-y3-EGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-663" y="150"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZy-Eu-H26">
+                                <rect key="frame" x="23" y="370" width="68" height="30"/>
+                                <color key="backgroundColor" red="0.53851312895142378" green="0.36868593462678023" blue="0.59493619109947637" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Capture"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="9" y="332" width="68" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="capbtnclick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wyM-m3-GiB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYC-55-ZNd">
+                                <rect key="frame" x="23" y="430" width="68" height="30"/>
+                                <color key="backgroundColor" red="0.83311958909743278" green="0.85791266025641022" blue="0.44077013265658221" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="switch"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="9" y="370" width="68" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="switchclick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4R9-Xl-57t"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3PX-Gd-5aR">
+                                <rect key="frame" x="106" y="430" width="77" height="30"/>
+                                <color key="backgroundColor" red="0.90218349358974359" green="0.80031192024728581" blue="0.52138799596761576" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="takephoto"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="91" y="370" width="77" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="takephoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="057-oc-orb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4c-nY-Lhs">
+                                <rect key="frame" x="196" y="370" width="85" height="30"/>
+                                <color key="backgroundColor" red="0.79520664711884059" green="0.71526182132130023" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="AudioQueue"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="177" y="332" width="85" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="eqV-xN-akY" kind="show" id="p8F-GR-CxG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkD-Cm-4N5">
+                                <rect key="frame" x="122" y="370" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.52083615773343106" green="0.68516933698084725" blue="0.71958851439790572" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Button"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="91" y="332" width="46" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="281" y="480" width="136" height="53"/>
+                                </variation>
+                                <connections>
+                                    <action selector="buttonclick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IVD-fV-7mP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXi-LT-4ei">
+                                <rect key="frame" x="196" y="430" width="68" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.66730064522022237" blue="0.27273659322765298" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="AudioUnit"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="177" y="370" width="68" height="28"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="Hic-e0-wNv" kind="show" id="llk-c1-D3x"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FVb-DD-CcE">
+                                <rect key="frame" x="13" y="30" width="297" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="9" y="9" width="312" height="300"/>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5fQ-Ni-7bd"/>
+                    <connections>
+                        <outlet property="button1" destination="kkD-Cm-4N5" id="N8p-ic-5kG"/>
+                        <outlet property="capturebtn" destination="qZy-Eu-H26" id="4sg-dY-3nA"/>
+                        <outlet property="preview_cap" destination="FVb-DD-CcE" id="sDN-EU-AzT"/>
+                        <outlet property="switchbtn" destination="YYC-55-ZNd" id="qHt-Q0-Oxi"/>
+                        <outlet property="takephoto" destination="3PX-Gd-5aR" id="LFe-HE-crT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="150"/>
+        </scene>
+        <!--Audio Queue View Controller-->
+        <scene sceneID="Ejv-WK-L2J">
+            <objects>
+                <viewController id="eqV-xN-akY" customClass="AudioQueueViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fXp-U8-qZF"/>
+                        <viewControllerLayoutGuide type="bottom" id="hmd-tb-SpA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gvo-7C-fKg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBi-JJ-bzN">
+                                <rect key="frame" x="38" y="285" width="118" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.58194519509316389" blue="0.7565219392084862" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="AudioQueueStart"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="17" y="267" width="118" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="AudioQueueStartAction:" destination="eqV-xN-akY" eventType="touchUpInside" id="frP-LV-tPd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SS-cW-8k7">
+                                <rect key="frame" x="183" y="285" width="117" height="30"/>
+                                <color key="backgroundColor" red="0.93952864255648905" green="0.64468960209732107" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="AudioQueueStop"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="149" y="267" width="117" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="AudioQueueStopAction:" destination="eqV-xN-akY" eventType="touchUpInside" id="t8u-kq-u7I"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="AudioQueueStart" destination="cBi-JJ-bzN" id="ask-mL-O4G"/>
+                        <outlet property="AudioQueueStop" destination="7SS-cW-8k7" id="Zca-2F-aq6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0LS-te-WE7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="888" y="150"/>
+        </scene>
+        <!--Audio Unit View Controller-->
+        <scene sceneID="Ncx-Rc-maw">
+            <objects>
+                <viewController id="Hic-e0-wNv" customClass="AudioUnitViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="866-dA-4MA"/>
+                        <viewControllerLayoutGuide type="bottom" id="aRG-KR-9lf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d0J-lw-vy2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TE1-H9-uDD">
+                                <rect key="frame" x="35" y="396" width="101" height="30"/>
+                                <color key="backgroundColor" red="0.55067909958176031" green="1" blue="0.44393692260610096" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="AudioUnitStart"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="290" width="101" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="AudioUnitStart:" destination="Hic-e0-wNv" eventType="touchUpInside" id="ERn-oQ-0uN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dki-cr-0th">
+                                <rect key="frame" x="147" y="396" width="100" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.74132171451765427" blue="0.9583526338145032" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="AudioUnitStop"/>
+                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="146" y="290" width="100" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="AudioUnitStop:" destination="Hic-e0-wNv" eventType="touchUpInside" id="oIA-Gc-Gpo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GYF-vg-tDY"/>
+                    <connections>
+                        <outlet property="AudioUnitStart" destination="TE1-H9-uDD" id="bvP-Sj-KPY"/>
+                        <outlet property="AudioUnitStop" destination="Dki-cr-0th" id="12J-1M-Z27"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VgP-wj-qYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="933"/>
+        </scene>
+    </scenes>
+</document>
