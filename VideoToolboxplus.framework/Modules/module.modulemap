@@ -1,0 +1,6 @@
+framework module VideoToolboxplus {
+  umbrella header "VideoToolboxplus.h"
+
+  export *
+  module * { export * }
+}

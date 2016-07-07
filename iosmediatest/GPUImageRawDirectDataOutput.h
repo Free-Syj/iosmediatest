@@ -39,7 +39,11 @@ NSLog(@"%s time-check:%lld " sformat, __func__, name##_dprocesstime, ## __VA_ARG
 // Data access
 - (NSUInteger)bytesPerRowInOutput;
 - (void)setImageSize:(CGSize)newImageSize;
--(GLubyte*)rawBytesForYuv420sp;
+-(GLubyte*)rawBytesForYuv420p;
 -(GLubyte*)rawBytesForYuvNv12;
 -(CMSampleBufferRef)rawBytesForSampleBuffer;
+-(CMSampleBufferRef)rawBytesGpuForSampleBuffer;
+-(CVPixelBufferRef)rawBytesGpuForPixelBuffer;
+-(CVPixelBufferRef)rawBytesy420ForPixelBuffer;
+-(CVPixelBufferRef)rawBytesnv12ForPixelBuffer;
 @end

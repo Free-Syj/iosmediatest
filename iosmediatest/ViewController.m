@@ -10,7 +10,7 @@
 //@import AVFoundation;
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "VideoToolboxPlus.h"
+#import <VideoToolboxplus/VideoToolboxplus.h>
 #include <pthread.h>
 #include "GPUImageVideoConversion.h"
 #include "GPUImageRawDirectDataOutput.h"
@@ -57,9 +57,22 @@
 @end
 
 @implementation ViewController
-
+-(void)applicationWillResignActive:(UIApplication *)application
+{
+    [self.capsession stopRunning];
+    NSLog(@"Background run....");
+}
+-(void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [self.capsession startRunning];
+    NSLog(@"Foreground run....");
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification object:nil]; //监听是否触发home键挂起程序
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil]; //监听是否重新进入程序程序.
     mbeautyq = dispatch_queue_create("live.sdk.beauty.video", NULL);
     mencoderq = dispatch_queue_create("live.sdk.bgratoi420.video", NULL);
     mH264Cnt = 0;
@@ -75,8 +88,36 @@
     
     __unsafe_unretained GPUImageRawDirectDataOutput * weakOutput = mRawOutput;
     [mRawOutput setNewFrameAvailableBlock:^{
+        BOOL forceKey = FALSE;
+        BOOL isencode = NO;
+        
+        GLubyte *outputBytes = [weakOutput rawBytesForYuv420p];
+        if( mH264Cnt%25 == 0 )
+            forceKey = TRUE;
+        isencode = [mVideoEncode encodeYuv420pBytes:outputBytes presentationTimeStamp:CMTimeMake(mH264Cnt*40*1000000, 1000000000) duration:CMTimeMake(40, 1) forceKeyframe:forceKey];
+        mH264Cnt++;
+        
+        return;
+        
+/*        CVPixelBufferRef pix_buf = [weakOutput rawBytesy420ForPixelBuffer];
+        if( mH264Cnt%25 == 0 )
+            forceKey = TRUE;
+        isencode = [mVideoEncode encodePixelBuffer:pix_buf presentationTimeStamp:CMTimeMake(mH264Cnt*40*1000000, 1000000000) duration:CMTimeMake(40, 1) forceKeyframe:forceKey];
+        mH264Cnt++;
+        
+        return;
+        
+  */
+/*        CVPixelBufferRef pix_buf = [weakOutput rawBytesGpuForPixelBuffer];  // ARGB试验通过
+        if( mH264Cnt%25 == 0 )
+            forceKey = TRUE;
+        isencode = [mVideoEncode encodePixelBuffer:pix_buf presentationTimeStamp:CMTimeMake(mH264Cnt*50*1000000, 1000000000) duration:CMTimeMake(40, 1) forceKeyframe:forceKey];
+        mH264Cnt++;
+        return;
+        */
+        
         //GLubyte* buf=[weakOutput rawBytesForImage];
-        CMSampleBufferRef sampleBuffer = [weakOutput rawBytesForSampleBuffer];
+        CMSampleBufferRef sampleBuffer = [weakOutput rawBytesGpuForSampleBuffer];
 //        GLubyte* buf = [weakOutput rawBytesForYuvNv21];
         
         CMTime timestamp = CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer);
@@ -107,10 +148,10 @@
 //        fwrite(y_src, y_bytePer_row*y_plane_height, 1, fdgpu);
 //        fwrite(cbcr_src, cbcr_bytePer_row*cbcr_plane_height, 1, fdgpu);
         
-        BOOL forceKey = FALSE;
+        
         if( mH264Cnt%25 == 0 )
             forceKey = TRUE;
-        BOOL isencode = [mVideoEncode encodeSampleBuffer:sampleBuffer forceKeyframe:forceKey];
+        isencode = [mVideoEncode encodeSampleBuffer:sampleBuffer forceKeyframe:forceKey];
         mH264Cnt++;
         NSLog(@"AVCapture VideoData Output....time:%lld w:%lu h:%lu isenc:%d cnt:%llu len:%lu", timestamp.value, plane_width, plane_height, 1, mH264Cnt, nlen);
         CVPixelBufferUnlockBaseAddress(frame, 0);
@@ -435,8 +476,8 @@
     [self.preview_cap addSubview:mGpuview];
 //    [mGpuview removeFromSuperview];
 //    AudioQueueNewInput(&asbd, AudioQueueInputCallback_, self, nil, nil, nil, &audioq);
-    NSError *verror = 0;
-    mVideoEncode = [[VTPCompressionSession alloc] initWithWidth:480 height:640 codec:kCMVideoCodecType_H264 error:&verror];
+    NSError *verror = 0;//kCVPixelFormatType_32ARGB
+    mVideoEncode = [[VTPCompressionSession alloc] initWithWidth:480 height:640 pix_fmt:kCVPixelFormatType_420YpCbCr8Planar codec:kCMVideoCodecType_H264 error:&verror];
     
     BOOL issupport = [VTPCompressionSession hasHardwareSupportForCodec:kCMVideoCodecType_H264];
     NSError * seterr = NULL;
@@ -445,12 +486,12 @@
 //    isset = [mVideoEncode setValue:kVTProfileLevel_H264_Main_AutoLevel forProperty:kVTCompressionPropertyKey_ProfileLevel error:&seterr];
     isset = [mVideoEncode setProfileLevel:kVTProfileLevel_H264_Baseline_AutoLevel error:&seterr];
 //    isset = [mVideoEncode setValue:@25 forProperty:kVTCompressionPropertyKey_MaxKeyFrameInterval error:&seterr];
-    isset = [mVideoEncode setMaxKeyframeInterval:@25 error:&seterr];
+    isset = [mVideoEncode setMaxKeyframeInterval:25 error:&seterr];
     isset = [mVideoEncode setValue:@25 forProperty:kVTCompressionPropertyKey_ExpectedFrameRate error:&seterr];
 //    isset = [mVideoEncode setValue:kVTH264EntropyMode_CABAC forProperty:kVTCompressionPropertyKey_H264EntropyMode error:&seterr];
     isset = [mVideoEncode setH264EntropyMode:kVTH264EntropyMode_CAVLC error:&seterr];
 //    isset = [mVideoEncode setValue:@300000 forProperty:kVTCompressionPropertyKey_AverageBitRate error:&seterr];
-//    isset = [mVideoEncode setAverageBitrate:300000 error:&seterr];
+    isset = [mVideoEncode setAverageBitrate:300000 error:&seterr];
     
 //    isset = [mVideoEncode setValue:@30000 forProperty:kVTCompressionPropertyKey_DataRateLimits error:&seterr];
 //    isset = [mVideoEncode setQuality:0.25 error:&seterr]; // low = 0.25, normal = 0.50,high = 0.75, and 1.0 implies lossless
